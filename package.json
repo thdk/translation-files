@@ -1,0 +1,34 @@
+{
+  "name": "translation-files",
+  "version": "0.0.1",
+  "description": "Extract all translation files from typescript source code. Clean output format that can be used by translators.",
+  "main": "lib/main.js",
+  "bin": {
+    "translation-files": "./bin/translation-files.js"
+  },
+  "keywords": [
+    "translations",
+    "localisation",
+    "react",
+    "node",
+    "javascript",
+    "localization ",
+    "translate"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Dekiere",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thdk/translation-files.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^6.2.0",
+    "del": "^6.0.0",
+    "glob": "^7.1.6",
+    "merge2": "^1.4.1",
+    "typescript": "^4.0.5"
+  }
+}
