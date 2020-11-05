@@ -1,6 +1,6 @@
 {
   "name": "translation-files",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Extract all translation files from typescript source code. Clean output format that can be used by translators.",
   "main": "lib/main.js",
   "types": "types/main.ts",
