@@ -17,7 +17,7 @@ export const getTranslationFiles = ({
 			globPattern,
 			{ ...defaultOptions, ...globOptions },
 			(
-				er: any,
+				er: unknown,
 				files: string[],
 			) => {
 				if (er) {

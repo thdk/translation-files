@@ -14,21 +14,23 @@ interface TranslationObject {
 
 type TranslationRequest = TranslationObject | TranslationObjects;
 
+export interface ProcessOptions {
+	translationKeyProperty?: string;
+	translationExport?: string;
+}
+
 export const processTranslationFile = (
 	file: string,
 	write: (msg: string) => void,
 	{
 		translationKeyProperty = "key",
 		translationExport = "translations",
-	}: {
-		translationKeyProperty?: string;
-		translationExport?: string;
-	} = {},
+	}: ProcessOptions = {},
 ) => {
 	// eslint-disable-next-line import/no-dynamic-require, global-require
 	const translations = require(file)[translationExport];
 
-	const isTranslationObject = (data: any): data is TranslationObject => {
+	const isTranslationObject = (data: unknown): data is TranslationObject => {
 		return typeof (data as any)[translationKeyProperty] === "string";
 	}
 

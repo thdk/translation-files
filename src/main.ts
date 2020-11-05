@@ -2,7 +2,10 @@ import path from "path";
 import del from "del";
 import fs from "fs";
 
+import { IOptions as GlobOptions } from "glob";
+
 import {
+	ProcessOptions,
 	processTranslationFile,
 } from "./process-translation-file";
 
@@ -25,7 +28,7 @@ const run = ({
 	cwd: string;
 	write?(msg: string): void;
 	tempDir: string;
-	processOptions: any;
+	processOptions: ProcessOptions;
 }) => {
 	const outDir = path.resolve(cwd, tempDir);
 
@@ -58,9 +61,9 @@ export const extractTranslations = async ({
 	tempDir = ".translations",
 }: {
 	globPattern?: string;
-	globOptions?: any;
+	globOptions?: GlobOptions;
 	outFile?: string;
-	processOptions: any;
+	processOptions: ProcessOptions;
 	tempDir?: string;
 }) => {
 	const files = await getTranslationFiles({
