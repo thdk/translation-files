@@ -1,4 +1,4 @@
-const os = require("os");
+import os from "os";
 
 export interface TranslationObjects {
 	[key: string]: TranslationObject | TranslationObjects;

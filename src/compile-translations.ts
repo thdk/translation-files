@@ -1,12 +1,12 @@
-const ts = require("typescript");
+import ts from "typescript";
 
-const compileTranslations = ({
+export const compileTranslations = ({
 	overrideTscCompilerOptions = {},
 	fileNames,
 	outDir,
 }: {
-	overrideTscCompilerOptions: any;
-	fileNames: readonly string [];
+	overrideTscCompilerOptions?: ts.CompilerOptions;
+	fileNames: readonly string[];
 	outDir: string;
 }) => {
 	const defaultTscCompilerOptions = {
@@ -26,14 +26,9 @@ const compileTranslations = ({
 	const program = ts.createProgram({
 		options: compilerOptions,
 		rootNames: fileNames,
-		incremental: true,
 	});
 
 	const result = program.emit();
 
 	return result.emittedFiles;
-};
-
-module.exports = {
-	compileTranslations,
 };

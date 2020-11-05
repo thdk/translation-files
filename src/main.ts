@@ -1,19 +1,18 @@
-const path = require("path");
-const del = require("del");
+import path from "path";
+import del from "del";
+import fs from "fs";
 
-const fs = require("fs");
-
-const {
+import {
 	processTranslationFile,
-} = require("./process-translation-file");
+} from "./process-translation-file";
 
-const {
+import {
 	compileTranslations,
-} = require("./compile-translations");
+} from "./compile-translations";
 
-const {
+import {
 	getTranslationFiles,
-} = require("./get-translation-files");
+} from "./get-translation-files";
 
 const run = ({
 	files,
@@ -35,18 +34,20 @@ const run = ({
 		outDir,
 	});
 
-	compiledTranslations.forEach(
-		(file: string) => processTranslationFile(
-			path.resolve(cwd, file),
-			write,
-			processOptions,
-		),
-	);
+	if (compiledTranslations) {
+		compiledTranslations.forEach(
+			(file: string) => processTranslationFile(
+				path.resolve(cwd, file),
+				write,
+				processOptions,
+			),
+		);
 
-	// remove temporary compiled label files
-	del.sync(
-		outDir,
-	);
+		// remove temporary compiled label files
+		del.sync(
+			outDir,
+		);
+	}
 };
 
 export const extractTranslations = async ({

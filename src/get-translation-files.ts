@@ -1,18 +1,18 @@
-const glob = require("glob");
+import { glob, IOptions } from "glob";
 
-const getTranslationFiles = ({
+export const getTranslationFiles = ({
 	globPattern = "**/**/translations.ts",
 	globOptions,
 }: {
 	globPattern?: string;
-	globOptions: any;
+	globOptions: IOptions;
 }) => {
-	const defaultOptions = {
+	const defaultOptions: IOptions = {
 		absolute: true,
 		cwd: process.cwd(),
 	};
 
-	return new Promise((resolve) => {
+	return new Promise<string[] | undefined>((resolve) => {
 		glob(
 			globPattern,
 			{ ...defaultOptions, ...globOptions },
@@ -34,8 +34,4 @@ const getTranslationFiles = ({
 			},
 		);
 	});
-};
-
-module.exports = {
-	getTranslationFiles,
 };
