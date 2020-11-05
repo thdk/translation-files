@@ -3,7 +3,8 @@
   "version": "0.1.1",
   "description": "Extract all translation files from typescript source code. Clean output format that can be used by translators.",
   "main": "lib/main.js",
-  "types": "types/main.ts",
+  "types": "types/main.d.ts",
+  "typings": "types/main.d.ts",
   "bin": {
     "translation-files": "./bin/translation-files.js"
   },
