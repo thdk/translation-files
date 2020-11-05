@@ -15,8 +15,7 @@ program.parse(process.argv);
 
 extractTranslations({
 	globPattern: program.pattern,
-	labelFile: program.hashFilename,
-	translationFile: program.outFile,
+	outFile: program.outFile,
 	processOptions: {
 		translationKeyProperty: program.keyName,
 		translationExport: program.exportName,

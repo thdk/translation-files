@@ -127,5 +127,6 @@ extractTranslations({
         translationKeyProperty: "label", // default "key"
         translationExport: "labels", // default "translations"
     },
+    outFile: "dist/labels.txt", // default undefined (output in console)
 });
 ```
