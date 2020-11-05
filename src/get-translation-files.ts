@@ -3,6 +3,9 @@ const glob = require("glob");
 const getTranslationFiles = ({
 	globPattern = "**/**/translations.ts",
 	globOptions,
+}: {
+	globPattern?: string;
+	globOptions: any;
 }) => {
 	const defaultOptions = {
 		absolute: true,
@@ -13,7 +16,10 @@ const getTranslationFiles = ({
 		glob(
 			globPattern,
 			{ ...defaultOptions, ...globOptions },
-			(er, files) => {
+			(
+				er: any,
+				files: string[],
+			) => {
 				if (er) {
 					console.error(er);
 					resolve(undefined);

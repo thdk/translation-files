@@ -21,6 +21,12 @@ const run = ({
 	write = (msg) => console.log(msg.trim()),
 	tempDir,
 	processOptions,
+}: {
+	files: readonly string[];
+	cwd: string;
+	write?(msg: string): void;
+	tempDir: string;
+	processOptions: any;
 }) => {
 	const outDir = path.resolve(cwd, tempDir);
 
@@ -30,7 +36,7 @@ const run = ({
 	});
 
 	compiledTranslations.forEach(
-		(file) => processTranslationFile(
+		(file: string) => processTranslationFile(
 			path.resolve(cwd, file),
 			write,
 			processOptions,
@@ -43,12 +49,18 @@ const run = ({
 	);
 };
 
-const extractTranslations = async ({
+export const extractTranslations = async ({
 	globPattern = "**/**/translations.ts",
 	globOptions = {},
 	outFile = undefined,
 	processOptions,
 	tempDir = ".translations",
+}: {
+	globPattern?: string;
+	globOptions?: any;
+	outFile?: string;
+	processOptions: any;
+	tempDir?: string;
 }) => {
 	const files = await getTranslationFiles({
 		globOptions,
@@ -79,7 +91,6 @@ const extractTranslations = async ({
 		stream.once("open", () => {
 			run({
 				files,
-				stream,
 				cwd,
 				write: (msg) => stream.write(msg),
 				processOptions,
@@ -96,8 +107,4 @@ const extractTranslations = async ({
 			tempDir,
 		});
 	}
-};
-
-module.exports = {
-	extractTranslations,
 };

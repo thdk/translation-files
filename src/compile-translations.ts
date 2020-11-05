@@ -4,6 +4,10 @@ const compileTranslations = ({
 	overrideTscCompilerOptions = {},
 	fileNames,
 	outDir,
+}: {
+	overrideTscCompilerOptions: any;
+	fileNames: readonly string [];
+	outDir: string;
 }) => {
 	const defaultTscCompilerOptions = {
 		lib: [],

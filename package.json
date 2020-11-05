@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Extract all translation files from typescript source code. Clean output format that can be used by translators.",
   "main": "lib/main.js",
+  "types": "types/main.ts",
   "bin": {
     "translation-files": "./bin/translation-files.js"
   },
@@ -16,8 +17,16 @@
     "translate"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:cjs": "tsc --declarationdir types",
+    "build:es": "tsc -m esNext --outDir esm --declaration false",
+    "build": "npm run build:cjs && npm run build:es",
+    "clean": "rimraf lib esm types"
   },
+  "files": [
+    "lib",
+    "esm",
+    "types"
+  ],
   "author": "Thomas Dekiere",
   "repository": {
     "type": "git",
@@ -28,7 +37,10 @@
     "commander": "^6.2.0",
     "del": "^6.0.0",
     "glob": "^7.1.6",
-    "merge2": "^1.4.1",
+    "merge2": "^1.4.1"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
     "typescript": "^4.0.5"
   }
 }
