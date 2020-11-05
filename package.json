@@ -20,7 +20,9 @@
     "build:cjs": "tsc --declarationdir types",
     "build:es": "tsc -m esNext --outDir esm --declaration false",
     "build": "npm run build:cjs && npm run build:es",
-    "clean": "rimraf lib esm types"
+    "clean": "rimraf lib esm types",
+    "prepare": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "files": [
     "lib",
