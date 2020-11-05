@@ -22,7 +22,7 @@
     "build": "npm run build:cjs && npm run build:es",
     "clean": "rimraf lib esm types",
     "prepare": "npm run build",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags && npm publish"
   },
   "files": [
     "lib",
