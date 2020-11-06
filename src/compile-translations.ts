@@ -18,7 +18,11 @@ export const compileTranslations = ({
         target: ts.ScriptTarget.ES3,
     };
 
-    const compilerOptions = Object.assign({}, defaultTscCompilerOptions, overrideTscCompilerOptions);
+    const compilerOptions = Object.assign(
+        {},
+        defaultTscCompilerOptions,
+        overrideTscCompilerOptions,
+    );
     const program = ts.createProgram({
         options: compilerOptions,
         rootNames: fileNames,

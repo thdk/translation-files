@@ -5,7 +5,11 @@ const { program } = require('commander');
 const { extractTranslations } = require('../lib/main');
 
 program
-    .option('--pattern [globPattern]', 'Pattern (glob) to used to find translation files.', '**/**/translations.ts')
+    .option(
+        '--pattern [globPattern]',
+        'Pattern (glob) to used to find translation files.',
+        '**/**/translations.ts',
+    )
     .option('--outFile [file]', 'File where translations should be saved to.')
     .option(
         '--exportName [var]',
